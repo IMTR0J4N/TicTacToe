@@ -43,3 +43,70 @@ h4 {
     font-size: 16px;
     font-kerning: 1px;
 }
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-gray);
+
+    main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .startmenu--container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            border-radius: 15px;
+            width: 25%;
+            
+            .symbol--selection {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 100%;
+                padding: 25px;
+                gap: 30px;
+                background-color: var(--color-bg2);
+                border-radius: 10px;
+
+                h4 {
+                    text-transform: uppercase;
+                }
+
+                ul {
+                    width: 100%;
+                    display: flex;
+                    background-color: var(--color-bg);
+                    padding: 10px;
+                    border-radius: 5px;
+
+                    label {
+                        width: 50%;
+                        li {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100%;
+                            width: 100%;
+                            padding: 10px;
+    
+                            input[type="radio"] {
+                                display: block;
+                            }
+
+                            input[type="radio"]:checked + img {
+                                color: var(--color-gray_light);
+                            }
+
+                        }
+                }
+            }
+        }
+    }
+}

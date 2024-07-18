@@ -13,7 +13,37 @@
 </head>
 
 <body>
+  <main>
+    <div class="startmenu--container">
+      <img src="/assets/img/logo.svg" alt="Tic Tac Toe logo">
 
+      <div class="symbol--selection">
+        <h4>pick player 1's mark</h4>
+
+        <ul>
+          <label for="symbolX">
+            <li>
+              <input type="radio" name="symbol" id="symbolX">
+              <img src="/assets/img/symbolX.svg" alt="Tic Tac Toe X symbol">
+            </li>
+          </label>
+          <label for="symbolO">
+            <li>
+              <input type="radio" name="symbol" id="symbolO">
+              <img src="/assets/img/symbolO.svg" alt="Tic Tac Toe O symbol">
+            </li>
+          </label>
+        </ul>
+
+        <span>remember : x goes first</span>
+      </div>
+
+      <div class="gametype--selection">
+        <input type="button" value="new game (vs cpu)">
+        <input type="button" value="new game (vs player)">
+      </div>
+    </div>
+  </main>
   <script src="./src/js/app.js" type="module"></script>
 </body>
 
