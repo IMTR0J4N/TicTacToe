@@ -234,6 +234,9 @@ const restartGame = () => {
     roundWin = false;
     gameGrid.innerHTML = ``;
 
+    if (turn === "X") turn = "O"
+    else turn = "X"
+
     for (let i = 1; i <= 9; i++) {
         const cell = document.createElement('div');
         cell.classList.add(`cell`);
@@ -241,8 +244,10 @@ const restartGame = () => {
         gameGrid.appendChild(cell);
 
         cell.addEventListener('click', () => {
-            addSymbol(cell);
-            nextTie(cell);
+            if(!roundWin) {
+                addSymbol(cell);
+                nextTie(cell);
+            }
         })
     }
 
