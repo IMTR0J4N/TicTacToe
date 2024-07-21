@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Tic Tac Toe game">
   <title>Tic Tac Toe</title>
+  <link rel="shortcut icon" href="/assets/img/logo.svg" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
@@ -14,33 +15,87 @@
 
 <body>
   <main>
-    <div class="startmenu--container">
+    <div class="game-end--modal" id="gameEndModal">
+      <div class="game-end--container" id="gameWin">
+        <span>PLAYER <span id="winner">1</span> WINS!</span>
+
+        <h1 id="winner-h1" class="orange">
+          <img id="winner-img" src="/assets/img/symbolO.svg" alt="winner symbol"> TAKES THE ROUND
+        </h1>
+
+        <div>
+          <button id="exitBtn">QUIT</button>
+          <button id="playAgainBtn">NEXT ROUND</button>
+        </div>
+      </div>
+      <div class="game-end--container" id="tie">
+        <h1>
+          ROUND TIED
+        </h1>
+        <div>
+          <button id="exitBtn">QUIT</button>
+          <button id="playAgainBtn">NEXT ROUND</button>
+        </div>
+      </div>
+    </div>
+    <div class="startmenu--container" id="startMenu">
       <img src="/assets/img/logo.svg" alt="Tic Tac Toe logo">
 
       <div class="symbol--selection">
         <h4>pick player 1's mark</h4>
 
         <ul>
-          <label for="symbolX">
-            <li>
-              <input type="radio" name="symbol" id="symbolX">
-              <img src="/assets/img/symbolX.svg" alt="Tic Tac Toe X symbol">
-            </li>
-          </label>
-          <label for="symbolO">
-            <li>
-              <input type="radio" name="symbol" id="symbolO">
-              <img src="/assets/img/symbolO.svg" alt="Tic Tac Toe O symbol">
-            </li>
-          </label>
+          <li>
+            <input type="radio" name="symbol" id="symbolX" class="symbols" data-symbol="X" checked>
+            <label for="symbolX" id="symbolTest">
+              <img data-state="inactive" src="/assets/img/symbolX-inactive.svg" alt="Tic Tac Toe X symbol inactive">
+              <img data-state="active" src="/assets/img/symbolX-active.svg" alt="Tic Tac Toe X symbol active">
+            </label>
+          </li>
+          <li>
+            <input type="radio" name="symbol" id="symbolO" class="symbols" data-symbol="O">
+            <label for="symbolO">
+              <img data-state="inactive" src="/assets/img/symbolO-inactive.svg" alt="Tic Tac Toe O symbol inactive">
+              <img data-state="active" src="/assets/img/symbolO-active.svg" alt="Tic Tac Toe O symbol active">
+            </label>
+          </li>
         </ul>
 
         <span>remember : x goes first</span>
       </div>
 
       <div class="gametype--selection">
-        <input type="button" value="new game (vs cpu)">
-        <input type="button" value="new game (vs player)">
+        <input data-action="startGame" data-gametype="cpu" type="button" id="newGameCPU" value="new game (vs cpu)">
+        <input data-action="startGame" data-gametype="player" type="button" id="newGamePlayer"
+          value="new game (vs player)">
+      </div>
+    </div>
+    <div class="game" id="game">
+      <div class="game-header">
+        <img id="header-logo" src="/assets/img/logo.svg" alt="Tic Tac Toe logo">
+        <div class="indicator">
+          <img src="" alt="turn indicator" id="turnIndicator">
+          <span>turn</span>
+        </div>
+        <button id="restartButton">
+          <img src="/assets/img/restart.svg" alt="restart button">
+        </button>
+      </div>
+      <div class="game-grid" id="gameGrid">
+      </div>
+      <div class="score--container">
+        <div id="x-info">
+          <small>X <span id="x-player"></span></small>
+          <span id="x-score">0</span>
+        </div>
+        <div id="ties-info">
+          <small>TIES</small>
+          <span id="ties">0</span>
+        </div>
+        <div id="o-info">
+          <small>O <span id="o-player"></span></small>
+          <span id="o-score">0</span>
+        </div>
       </div>
     </div>
   </main>
