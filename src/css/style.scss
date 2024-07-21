@@ -1,0 +1,407 @@
+$color-ocean: #31C3BD;
+$color-ocean_light: #65E9E4;
+$color-orange: #F2B137;
+$color-yellow: #FFC860;
+$color-gray: #A8BFC9;
+$color-gray_light: #DBE8ED;
+$color-bg: #1A2A33;
+$color-bg2: #1F3641;
+$color-shadow: #10212A;
+$color-shadow2: #CC8B13;
+$color-shadow3: #118C87;
+
+
+$font-family: "Outfit", sans-serif;
+$font-weight_bold: 700;
+$font-weight_medium: 500;
+
+* {
+    font-family: $font-family;
+    font-weight: $font-weight_medium;
+    font-size: 14px;
+    font-kerning: 0.8px;
+    transition-duration: 200ms;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: $font-weight_bold;
+}
+
+h1 {
+    font-size: 40px;
+    font-kerning: 2.5px;
+}
+
+h2 {
+    font-size: 24px;
+    font-kerning: 1.5px;
+}
+
+h3 {
+    font-size: 20px;
+    font-kerning: 1.25px;
+}
+
+h4 {
+    font-size: 16px;
+    font-kerning: 1px;
+}
+
+body {
+    background-color: $color-bg;
+    color: $color-gray;
+
+    main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .startmenu--container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            border-radius: 15px;
+            width: 25%;
+
+            .symbol--selection {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 100%;
+                padding: 25px;
+                gap: 30px;
+                background-color: $color-bg2;
+                border-radius: 10px;
+                box-shadow: $color-shadow 0px 8px 0px 0px;
+
+                h4 {
+                    text-transform: uppercase;
+                }
+
+                ul {
+                    width: 100%;
+                    display: flex;
+                    background-color: $color-bg;
+                    padding: 10px;
+                    border-radius: 5px;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100%;
+                        width: 100%;
+
+                        input[type="radio"] {
+                            display: none;
+
+                            &:checked+label {
+                                background-color: $color-gray;
+
+                                img[data-state="active"] {
+                                    display: block;
+                                }
+
+                                img[data-state="inactive"] {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        label {
+                            height: 100%;
+                            width: 100%;
+                            padding: 5px;
+                            border-radius: 5px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            img[data-state="active"] {
+                                display: none;
+                            }
+
+                            img[data-state="inactive"] {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                span {
+                    text-transform: uppercase;
+                    color: $color-gray;
+                    opacity: 0.5;
+                }
+            }
+
+            .gametype--selection {
+                display: flex;
+                gap: 20px;
+                width: 100%;
+                flex-direction: column;
+
+                input {
+                    width: 100%;
+                    height: 55px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                }
+
+                #newGameCPU {
+                    background-color: $color-orange;
+                    border: none;
+                    box-shadow: $color-shadow2 0px 5px 0px 0px;
+                    border-radius: 10px;
+
+                    &:active {
+                        transform: translateY(5px);
+                        box-shadow: none;
+                    }
+                }
+
+                #newGamePlayer {
+                    background-color: $color-ocean;
+                    border: none;
+                    box-shadow: $color-shadow3 0px 5px 0px 0px;
+                    border-radius: 10px;
+
+                    &:active {
+                        transform: translateY(5px);
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+
+        .game {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            width: fit-content;
+
+            .game-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+
+                #header-logo {
+                    width: 50px;
+                }
+
+                .indicator {
+                    background-color: $color-bg2;
+                    display: flex;
+                    justify-content: center;
+                    align-self: center;
+                    padding: 10px 25px;
+                    gap: 10px;
+                    border-radius: 10px;
+                    box-shadow: $color-shadow 0px 5px 0px 0px;
+
+                    img {
+                        width: 15px;
+                    }
+
+                    span {
+                        text-transform: uppercase;
+                    }
+                }
+
+                #restartButton {
+                    height: fit-content;
+                    width: fit-content;
+                    padding: 10px 10px 7px 10px;
+                    border: none;
+                    border-radius: 5px;
+
+                    background-color: $color-gray;
+                    box-shadow: #696969 0px 3px 0px 0px;
+
+                    &:active {
+                        transform: translateY(3px);
+                        box-shadow: none
+                    }
+
+                    img {
+                        width: 15px;
+                    }
+                }
+            }
+
+            .game-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 8vw);
+                grid-template-rows: repeat(3, 8vw);
+                grid-column-gap: 15px;
+                grid-row-gap: 15px;
+                
+                .cell {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $color-bg2;
+                    border-radius: 10px;
+                    box-shadow: $color-shadow 0px .5vw 0px 0px;
+
+                    img {
+                        width: 50%;
+                    }
+                }
+
+                .winning-cell-x {
+                    background-color: $color-ocean;
+                }
+
+                .winning-cell-o {
+                    background-color: $color-orange;
+                }
+            }
+
+            .score--container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+
+                div {
+                    width: 8vw;
+                    height: 4vw;
+                    border-radius: 10px;
+                    color: $color-bg;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    span {
+                        font-size: 16px;
+                    }
+
+                    small {
+                        font-size: 12px;
+
+                        span {
+                            font-size: 12px;
+                        }
+                    } 
+                }
+
+                #x-info {
+                    background-color: $color-ocean;
+                }
+
+                #ties-info {
+                    background-color: $color-gray;
+                }
+
+                #o-info {
+                    background-color: $color-orange;
+                }
+            }
+        }
+
+        .game-end--modal {
+            position: absolute;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba(#000000, 0.7);
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+            animation: 1.5s linear modalIncome;
+
+            .game-end--container {
+                position: relative;
+                height: 35%;
+                width: 100%;
+                background-color: $color-bg;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 20px;
+                animation: 1s ease-in-out modalSlide;
+
+                .orange {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    color: $color-orange;
+                }
+
+                .ocean {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    color: $color-ocean;
+                }
+
+                #exitBtn {
+                    background-color: $color-gray;
+                    border-radius: 10px;
+                    border: none;
+                    padding: 10px;
+
+                    box-shadow: #696969 0px 3px 0px 0px;
+
+                    &:active {
+                        transform: translateY(3px);
+                        box-shadow: none
+                    }
+                }
+
+                div {
+                    display: flex;
+                    gap: 10px;
+
+                    #playAgainBtn {
+                        background-color: $color-orange;
+                        border-radius: 10px;
+                        border: none;
+                        padding: 10px;
+    
+                        box-shadow: $color-shadow2 0px 3px 0px 0px;
+    
+                        &:active {
+                            transform: translateY(3px);
+                            box-shadow: none
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes modalIncome {
+    from {
+        background-color: none !important;
+    }
+
+    to {
+        background-color: rgba(#000000, 0.7);
+    }
+}
+
+@keyframes modalSlide {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
